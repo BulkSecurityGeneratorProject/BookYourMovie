@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "BookYourMovie",
+    "packageName": "io.akhil.bookyourmovie",
+    "packageFolder": "io/akhil/bookyourmovie",
+    "serverPort": 8080,
+    "serviceDiscoveryType": "eureka",
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "protractor"
+    ],
+    "enableTranslation": false,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.5.0",
+    "jwtSecretKey": "MTdmMmM4ODU3MjA0ZGYzMWIzZjMwZGRjYjgxYWY0MTFhM2E3NGVlODg0MzdjNmIzY2M3N2VhZjNhOGNkYWZkN2UxNGM3YTQxNWVjYTFiYWUyNmE1NjQ3MDQ5NTNjNGQyOTc2YmZmNWJkNDk3ODgxZjQxN2M4YzUxZTBiOGI5ZGQ="
+  }
+}
