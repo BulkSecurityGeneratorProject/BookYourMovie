@@ -13,6 +13,7 @@ import {
     SettingsComponent,
     accountState
 } from './';
+import { RegisterTheatreAccountComponent } from './register-theatre-account/register-theatre-account.component';
 
 @NgModule({
     imports: [BookYourMovieSharedModule, RouterModule.forChild(accountState)],
@@ -23,7 +24,8 @@ import {
         PasswordStrengthBarComponent,
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
-        SettingsComponent
+        SettingsComponent,
+        RegisterTheatreAccountComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

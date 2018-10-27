@@ -182,6 +182,12 @@
                             <span>Register</span>
                         </a>
                     </li>
+                    <li *ngSwitchCase="false">
+                        <a class="dropdown-item" routerLink="register-theatre" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'user-plus'" [fixedWidth]="true"></fa-icon>
+                            <span>Register as Theatre</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
