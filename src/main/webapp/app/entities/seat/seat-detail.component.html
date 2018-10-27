@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="seat">
+            <h2><span>Seat</span> {{seat.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Seat Number</span></dt>
+                <dd>
+                    <span>{{seat.seatNumber}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{seat.status}}</span>
+                </dd>
+                <dt><span>Booking</span></dt>
+                <dd>
+                    <div *ngIf="seat.bookingId">
+                        <a [routerLink]="['/booking', seat.bookingId, 'view']">{{seat.bookingId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Seat Type</span></dt>
+                <dd>
+                    <div *ngIf="seat.seatTypeId">
+                        <a [routerLink]="['/seat-type', seat.seatTypeId, 'view']">{{seat.seatTypeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/seat', seat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

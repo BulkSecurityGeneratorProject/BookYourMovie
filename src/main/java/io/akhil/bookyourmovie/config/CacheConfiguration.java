@@ -41,6 +41,22 @@ public class CacheConfiguration {
             cm.createCache(io.akhil.bookyourmovie.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.akhil.bookyourmovie.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.akhil.bookyourmovie.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.City.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.City.class.getName() + ".theatres", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Theatre.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Theatre.class.getName() + ".screens", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Booking.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Booking.class.getName() + ".seats", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Screen.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Screen.class.getName() + ".seats", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Screen.class.getName() + ".shows", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Movie.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.SeatType.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Seat.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Seat.class.getName() + ".types", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Show.class.getName(), jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Screen.class.getName() + ".seatTypes", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.SeatType.class.getName() + ".seats", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

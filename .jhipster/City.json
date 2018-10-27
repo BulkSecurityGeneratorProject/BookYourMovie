@@ -1,0 +1,27 @@
+{
+    "name": "City",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "CityNames",
+            "fieldValues": "HYDERABAD,BANGALORE,KOLKATTA"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "theatre",
+            "otherEntityName": "theatre",
+            "otherEntityRelationshipName": "city"
+        }
+    ],
+    "changelogDate": "20181024150415",
+    "entityTableName": "city",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

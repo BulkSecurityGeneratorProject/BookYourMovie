@@ -1,0 +1,38 @@
+{
+    "name": "Screen",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "theatre",
+            "otherEntityName": "theatre",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "seatType",
+            "otherEntityName": "seatType",
+            "otherEntityRelationshipName": "screen"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "show",
+            "otherEntityName": "show",
+            "otherEntityRelationshipName": "screen"
+        }
+    ],
+    "changelogDate": "20181024150418",
+    "entityTableName": "screen",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

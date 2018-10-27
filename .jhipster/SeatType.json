@@ -1,0 +1,37 @@
+{
+    "name": "SeatType",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "SeatClass",
+            "fieldValues": "LUXURY,GENERAL,BALCONY"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "screen",
+            "otherEntityName": "screen",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "seat",
+            "otherEntityName": "seat",
+            "otherEntityRelationshipName": "seatType"
+        }
+    ],
+    "changelogDate": "20181024150420",
+    "entityTableName": "seat_type",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

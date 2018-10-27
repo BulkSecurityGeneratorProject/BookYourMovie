@@ -1,0 +1,94 @@
+entity City{
+	name CityNames
+}
+
+enum CityNames{
+	HYDERABAD,
+    BANGALORE,
+    KOLKATTA
+    
+}
+
+entity Theatre {
+	name String,
+    area String
+}
+
+entity Booking{
+	id String,
+    time Instant
+}
+
+entity Screen {
+	name String
+    
+}
+
+entity Movie{
+	name String,
+    language Language,
+    description String,
+    imageUrl String
+}
+
+enum Language{
+	TELUGU,
+    HINDI,
+    ENGLISH,
+    TAMIL,
+    MALAYALAM,
+    KANNADA
+}
+
+enum SeatClass{
+	LUXURY,
+    GENERAL,
+    BALCONY
+}
+
+entity SeatType{
+	type SeatClass,
+    price String
+}
+
+enum Status{
+	BOOKED,
+    VACANT,
+    SPACE
+}
+
+entity Seat{
+	seatNumber String,
+    status Status
+}
+
+entity Show{
+	time ZonedDateTime
+}
+
+relationship OneToOne{
+	Booking{show} to Show
+}
+
+relationship OneToMany {
+    Screen{seatType} to SeatType,
+    SeatType{seat} to Seat,
+    Theatre{screen} to Screen,
+    Screen{show} to Show,
+    City{theatre} to Theatre,
+    Booking{seat} to Seat
+}
+
+relationship ManyToOne{
+    Show{movie} to Movie
+}
+
+
+// Use Data Transfert Objects (DTO)
+dto all with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

@@ -1,0 +1,34 @@
+{
+    "name": "Booking",
+    "fields": [
+        {
+            "fieldName": "time",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "show",
+            "otherEntityName": "show",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "booking"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "seat",
+            "otherEntityName": "seat",
+            "otherEntityRelationshipName": "booking"
+        }
+    ],
+    "changelogDate": "20181024150417",
+    "entityTableName": "booking",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

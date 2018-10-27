@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SeatType.
+    -->
+    <changeSet id="20181024150420-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="screen_id"
+                                 baseTableName="seat_type"
+                                 constraintName="fk_seat_type_screen_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="screen"/>
+
+    </changeSet>
+</databaseChangeLog>
