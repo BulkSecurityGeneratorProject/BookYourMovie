@@ -11,9 +11,9 @@ import {
     PasswordResetInitComponent,
     PasswordResetFinishComponent,
     SettingsComponent,
-    accountState
+    accountState,
+    RegisterTheatreAccountComponent
 } from './';
-import { RegisterTheatreAccountComponent } from './register-theatre-account/register-theatre-account.component';
 
 @NgModule({
     imports: [BookYourMovieSharedModule, RouterModule.forChild(accountState)],

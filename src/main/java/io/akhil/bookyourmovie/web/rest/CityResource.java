@@ -81,9 +81,21 @@ public class CityResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of cities in body
      */
-    @GetMapping("/cities")
+    @GetMapping("/cities") // following convention to avoid confusions
     @Timed
     public List<CityDTO> getAllCities() {
+        log.debug("REST request to get all Cities");
+        return cityService.findAll();
+    }
+    
+    /**
+     * GET  /cities : get all the cities.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of cities in body
+     */
+    @GetMapping("/get-supported-cities") // no security api
+    @Timed
+    public List<CityDTO> getSupportedCities() {
         log.debug("REST request to get all Cities");
         return cityService.findAll();
     }

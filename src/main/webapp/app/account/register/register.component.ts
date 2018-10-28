@@ -5,6 +5,7 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
+import { Form, NgForm, NgModel } from '@angular/forms';
 
 @Component({
     selector: 'jhi-register',
@@ -19,21 +20,44 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     registerAccount: any;
     success: boolean;
     modalRef: NgbModalRef;
+    registerAsTheatre: boolean;
+
+    form: Form;
 
     constructor(
         private loginModalService: LoginModalService,
         private registerService: Register,
         private elementRef: ElementRef,
         private renderer: Renderer
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.success = false;
+        this.registerAsTheatre = false;
         this.registerAccount = {};
     }
 
     ngAfterViewInit() {
         this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#login'), 'focus', []);
+    }
+
+    toggleRegistrationType() {
+        this.registerAsTheatre = !this.registerAsTheatre;
+    }
+
+    checkPasswordMatch(password, confirmPassword, formId: NgModel, form: NgForm) {
+        if (!password || !confirmPassword) {
+            return;
+        }
+        if (password !== confirmPassword) {
+            formId.control.setErrors({
+                doesnotmatch: true
+            });
+        }
+    }
+
+    onCustomSuccess(val: boolean) {
+        this.success = val;
     }
 
     register() {
@@ -52,6 +76,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                 response => this.processError(response)
             );
         }
+    }
+
+    onCustomError(response) {
+        this.processError(response);
     }
 
     openLogin() {

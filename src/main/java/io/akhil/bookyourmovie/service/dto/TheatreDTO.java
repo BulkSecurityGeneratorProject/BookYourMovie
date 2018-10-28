@@ -8,74 +8,81 @@ import java.util.Objects;
  */
 public class TheatreDTO implements Serializable {
 
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private String area;
+	private String area;
 
-    private Long cityId;
+	private Long cityId;
 
-    public Long getId() {
-        return id;
-    }
+	private Long ownerId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getArea() {
-        return area;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setArea(String area) {
-        this.area = area;
-    }
+	public String getArea() {
+		return area;
+	}
 
-    public Long getCityId() {
-        return cityId;
-    }
+	public void setArea(String area) {
+		this.area = area;
+	}
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
-    }
+	public Long getCityId() {
+		return cityId;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setCityId(Long cityId) {
+		this.cityId = cityId;
+	}
 
-        TheatreDTO theatreDTO = (TheatreDTO) o;
-        if (theatreDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), theatreDTO.getId());
-    }
+	public Long getOwnerId() {
+		return ownerId;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
 
-    @Override
-    public String toString() {
-        return "TheatreDTO{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", area='" + getArea() + "'" +
-            ", city=" + getCityId() +
-            "}";
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		TheatreDTO theatreDTO = (TheatreDTO) o;
+		if (theatreDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), theatreDTO.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "TheatreDTO [id=" + id + ", name=" + name + ", area=" + area + ", cityId=" + cityId + ", ownerId="
+				+ ownerId + "]";
+	}
+
 }

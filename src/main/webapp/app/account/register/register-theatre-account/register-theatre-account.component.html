@@ -1,0 +1,48 @@
+<form name="form" role="form" (ngSubmit)="register()" #theatreForm="ngForm">
+  <div class="form-group">
+    <label class="form-control-label" for="field_city">City</label>
+    <select required class="form-control" id="field_city" name="city" [(ngModel)]="theatre.cityId">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-control-label" for="name">Theatre Name</label>
+    <input type="text" class="form-control" [(ngModel)]="theatre.name" #name="ngModel" id="name" name="name" placeholder="Theatre Name"
+      required minlength="1" maxlength="50" pattern="^[_.@A-Za-z 0-9-]*$">
+    <div *ngIf="name.dirty && name.invalid">
+      <small class="form-text text-danger" *ngIf="name.errors.required">
+        Your theatre name is required.
+      </small>
+      <small class="form-text text-danger" *ngIf="name.errors.minlength">
+        Your theatre name is required to be at least 1 character.
+      </small>
+      <small class="form-text text-danger" *ngIf="name.errors.maxlength">
+        Your theatre name cannot be longer than 50 characters.
+      </small>
+      <small class="form-text text-danger" *ngIf="name.errors.pattern">
+        Your theatre name can only contain letters and digits.
+      </small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-control-label" for="area">Theatre Area</label>
+    <input type="text" class="form-control" [(ngModel)]="theatre.area" id="area" #area="ngModel" name="area" placeholder="Theatre Area"
+      required minlength="1" maxlength="50" pattern="^[_.@A-Za-z 0-9-]*$">
+    <div *ngIf="area.dirty && area.invalid">
+      <small class="form-text text-danger" *ngIf="area.errors.required">
+        Your theatre area is required.
+      </small>
+      <small class="form-text text-danger" *ngIf="area.errors.minlength">
+        Your theatre area is required to be at least 1 character.
+      </small>
+      <small class="form-text text-danger" *ngIf="area.errors.maxlength">
+        Your theatre area cannot be longer than 50 characters.
+      </small>
+      <small class="form-text text-danger" *ngIf="area.errors.pattern">
+        Your theatre area can only contain letters and digits.
+      </small>
+    </div>
+  </div>
+  <button type="submit" [disabled]="theatreForm.form.invalid || disableForm" class="btn btn-primary">Register</button>
+</form>

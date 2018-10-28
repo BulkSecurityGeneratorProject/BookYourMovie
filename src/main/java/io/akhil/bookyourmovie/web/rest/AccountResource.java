@@ -8,6 +8,7 @@ import io.akhil.bookyourmovie.security.SecurityUtils;
 import io.akhil.bookyourmovie.service.MailService;
 import io.akhil.bookyourmovie.service.UserService;
 import io.akhil.bookyourmovie.service.dto.PasswordChangeDTO;
+import io.akhil.bookyourmovie.service.dto.TheatreAccountDTO;
 import io.akhil.bookyourmovie.service.dto.UserDTO;
 import io.akhil.bookyourmovie.web.rest.errors.*;
 import io.akhil.bookyourmovie.web.rest.vm.KeyAndPasswordVM;
@@ -62,6 +63,22 @@ public class AccountResource {
             throw new InvalidPasswordException();
         }
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        mailService.sendActivationEmail(user);
+    }
+    
+    /**
+     * POST  /register/theatre-account : register the user.
+     *
+     * @param managedUserVM the managed user View Model
+     * @throws InvalidPasswordException 400 (Bad Request) if the password is incorrect
+     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already used
+     * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already used
+     */
+    @PostMapping("/register/theatre-account")
+    @Timed
+    @ResponseStatus(HttpStatus.CREATED)
+    public void registerTheatreAccount(@Valid @RequestBody TheatreAccountDTO theatreAccount) {
+        User user = userService.registerTheatre(theatreAccount.getUser(), theatreAccount.getPassword(), theatreAccount.getTheatre());
         mailService.sendActivationEmail(user);
     }
 

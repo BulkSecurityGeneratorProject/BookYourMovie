@@ -13,7 +13,7 @@ type EntityArrayResponseType = HttpResponse<ICity[]>;
 export class CityService {
     public resourceUrl = SERVER_API_URL + 'api/cities';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     create(city: ICity): Observable<EntityResponseType> {
         return this.http.post<ICity>(this.resourceUrl, city, { observe: 'response' });
@@ -30,6 +30,11 @@ export class CityService {
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http.get<ICity[]>(this.resourceUrl, { params: options, observe: 'response' });
+    }
+
+    getSupportedCities(req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http.get<ICity[]>(SERVER_API_URL + 'api/get-supported-cities', { params: options, observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

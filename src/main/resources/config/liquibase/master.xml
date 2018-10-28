@@ -20,5 +20,6 @@
     <include file="config/liquibase/changelog/20181024150420_added_entity_constraints_SeatType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181024150421_added_entity_constraints_Seat.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181024150422_added_entity_constraints_Show.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181024150417_added_entity_constraints_Theatre_User.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
