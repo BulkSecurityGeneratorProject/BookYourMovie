@@ -1,0 +1,214 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="akhil (generated)" id="1540737045370-1">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-2">
+        <createTable tableName="booking">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="bookingPK"/>
+            </column>
+            <column name="jhi_time" type="BINARY(255)"/>
+            <column name="show_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-3">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="cityPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-5">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="BINARY(255)"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-6">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="BINARY(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="BINARY(255)"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(6)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="BINARY(255)"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-9">
+        <createTable tableName="movie">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="moviePK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+            <column name="language" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-10">
+        <createTable tableName="screen">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="screenPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="theatre_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-11">
+        <createTable tableName="seat">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="seatPK"/>
+            </column>
+            <column name="seat_number" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="booking_id" type="BIGINT"/>
+            <column name="seat_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-12">
+        <createTable tableName="seat_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="seat_typePK"/>
+            </column>
+            <column name="price" type="VARCHAR(255)"/>
+            <column name="jhi_type" type="VARCHAR(255)"/>
+            <column name="screen_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-13">
+        <createTable tableName="show">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="showPK"/>
+            </column>
+            <column name="jhi_time" type="BINARY(255)"/>
+            <column name="movie_id" type="BIGINT"/>
+            <column name="screen_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-14">
+        <createTable tableName="theatre">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="theatrePK"/>
+            </column>
+            <column name="area" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="city_id" type="BIGINT"/>
+            <column name="owner_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-15">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-16">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-17">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-18">
+        <addUniqueConstraint columnNames="show_id" constraintName="UC_BOOKINGSHOW_ID_COL" tableName="booking"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-19">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-20">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-21">
+        <addUniqueConstraint columnNames="owner_id" constraintName="UC_THEATREOWNER_ID_COL" tableName="theatre"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-22">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-23">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-24">
+        <addForeignKeyConstraint baseColumnNames="show_id" baseTableName="booking" constraintName="FK2lr4fhgeao9p3uyhngtwn67h7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="show"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-25">
+        <addForeignKeyConstraint baseColumnNames="owner_id" baseTableName="theatre" constraintName="FK37yohoxhwpv8jy33em29fx3tr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-26">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-27">
+        <addForeignKeyConstraint baseColumnNames="seat_type_id" baseTableName="seat" constraintName="FKd4mx49q62bd2apkk2rfkl8l9w" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="seat_type"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-28">
+        <addForeignKeyConstraint baseColumnNames="booking_id" baseTableName="seat" constraintName="FKh9tai2ifsgeqsir5p5c6uhr5x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="booking"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-29">
+        <addForeignKeyConstraint baseColumnNames="theatre_id" baseTableName="screen" constraintName="FKilngvwq9jgk3is184yjhkx9k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="theatre"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-30">
+        <addForeignKeyConstraint baseColumnNames="screen_id" baseTableName="show" constraintName="FKpmdhsg2pprfg2634ojdwiv181" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="screen"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-31">
+        <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="theatre" constraintName="FKqfrea71qlwgmpbyrmldr5iln3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="city"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-32">
+        <addForeignKeyConstraint baseColumnNames="screen_id" baseTableName="seat_type" constraintName="FKr8ejwrpwu9kg7ptqu8miedjb8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="screen"/>
+    </changeSet>
+    <changeSet author="akhil (generated)" id="1540737045370-33">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="show" constraintName="FKrko1v6l96s1pp0gvuit6c7l7q" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="movie"/>
+    </changeSet>
+</databaseChangeLog>

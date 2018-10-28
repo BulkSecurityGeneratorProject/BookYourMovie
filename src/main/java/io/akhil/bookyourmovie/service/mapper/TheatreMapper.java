@@ -8,24 +8,24 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Theatre and its DTO TheatreDTO.
  */
-@Mapper(componentModel = "spring", uses = { CityMapper.class })
+@Mapper(componentModel = "spring", uses = {CityMapper.class, UserMapper.class})
 public interface TheatreMapper extends EntityMapper<TheatreDTO, Theatre> {
 
-	@Mapping(source = "city.id", target = "cityId")
-	@Mapping(source = "owner.id", target = "ownerId")
-	TheatreDTO toDto(Theatre theatre);
+    @Mapping(source = "city.id", target = "cityId")
+    @Mapping(source = "owner.id", target = "ownerId")
+    TheatreDTO toDto(Theatre theatre);
 
-	@Mapping(source = "cityId", target = "city")
-	@Mapping(source = "ownerId", target = "owner")
-	@Mapping(target = "screens", ignore = true)
-	Theatre toEntity(TheatreDTO theatreDTO);
+    @Mapping(source = "cityId", target = "city")
+    @Mapping(source = "ownerId", target = "owner")
+    @Mapping(target = "screens", ignore = true)
+    Theatre toEntity(TheatreDTO theatreDTO);
 
-	default Theatre fromId(Long id) {
-		if (id == null) {
-			return null;
-		}
-		Theatre theatre = new Theatre();
-		theatre.setId(id);
-		return theatre;
-	}
+    default Theatre fromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Theatre theatre = new Theatre();
+        theatre.setId(id);
+        return theatre;
+    }
 }

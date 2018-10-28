@@ -18,6 +18,14 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "theatre"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "screen",
             "otherEntityName": "screen",

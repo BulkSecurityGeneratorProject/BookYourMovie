@@ -29,6 +29,7 @@ export class TheatreUpdatePage {
     nameInput = element(by.id('field_name'));
     areaInput = element(by.id('field_area'));
     citySelect = element(by.id('field_city'));
+    ownerSelect = element(by.id('field_owner'));
 
     async getPageTitle() {
         return this.pageTitle.getText();
@@ -67,6 +68,25 @@ export class TheatreUpdatePage {
 
     async getCitySelectedOption() {
         return this.citySelect.element(by.css('option:checked')).getText();
+    }
+
+    async ownerSelectLastOption() {
+        await this.ownerSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async ownerSelectOption(option) {
+        await this.ownerSelect.sendKeys(option);
+    }
+
+    getOwnerSelect(): ElementFinder {
+        return this.ownerSelect;
+    }
+
+    async getOwnerSelectedOption() {
+        return this.ownerSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

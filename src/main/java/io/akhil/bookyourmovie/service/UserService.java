@@ -1,16 +1,13 @@
 package io.akhil.bookyourmovie.service;
 
-import io.akhil.bookyourmovie.config.Constants;
-import io.akhil.bookyourmovie.domain.Authority;
-import io.akhil.bookyourmovie.domain.User;
-import io.akhil.bookyourmovie.repository.AuthorityRepository;
-import io.akhil.bookyourmovie.repository.UserRepository;
-import io.akhil.bookyourmovie.security.AuthoritiesConstants;
-import io.akhil.bookyourmovie.security.SecurityUtils;
-import io.akhil.bookyourmovie.service.dto.TheatreDTO;
-import io.akhil.bookyourmovie.service.dto.UserDTO;
-import io.akhil.bookyourmovie.service.util.RandomUtil;
-import io.akhil.bookyourmovie.web.rest.errors.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +19,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
-import java.util.stream.Collectors;
+import io.akhil.bookyourmovie.config.Constants;
+import io.akhil.bookyourmovie.domain.Authority;
+import io.akhil.bookyourmovie.domain.Theatre;
+import io.akhil.bookyourmovie.domain.User;
+import io.akhil.bookyourmovie.repository.AuthorityRepository;
+import io.akhil.bookyourmovie.repository.UserRepository;
+import io.akhil.bookyourmovie.security.AuthoritiesConstants;
+import io.akhil.bookyourmovie.security.SecurityUtils;
+import io.akhil.bookyourmovie.service.dto.TheatreDTO;
+import io.akhil.bookyourmovie.service.dto.UserDTO;
+import io.akhil.bookyourmovie.service.util.RandomUtil;
+import io.akhil.bookyourmovie.web.rest.errors.EmailAlreadyUsedException;
+import io.akhil.bookyourmovie.web.rest.errors.InvalidPasswordException;
+import io.akhil.bookyourmovie.web.rest.errors.LoginAlreadyUsedException;
 
 /**
  * Service class for managing users.
@@ -164,9 +171,13 @@ public class UserService {
     }
     
     public User registerTheatre(UserDTO userDTO, String password, TheatreDTO theatreDTO) {
+    	
         User user = registerUserAsOwner(userDTO, password);
+        log.info("Created Information for User: {}", user);
         theatreDTO.setOwnerId(user.getId());
-        theatreService.save(theatreDTO);
+        log.info("Trying to save theatre: {}", theatreDTO);
+        theatreDTO = theatreService.save(theatreDTO);
+        log.info("Data saved in theatre as: {}", theatreDTO);
         return user;
     }
     

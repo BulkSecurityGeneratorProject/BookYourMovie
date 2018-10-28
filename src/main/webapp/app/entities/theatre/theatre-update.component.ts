@@ -8,6 +8,7 @@ import { ITheatre } from 'app/shared/model/theatre.model';
 import { TheatreService } from './theatre.service';
 import { ICity } from 'app/shared/model/city.model';
 import { CityService } from 'app/entities/city';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-theatre-update',
@@ -19,10 +20,13 @@ export class TheatreUpdateComponent implements OnInit {
 
     cities: ICity[];
 
+    users: IUser[];
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private theatreService: TheatreService,
         private cityService: CityService,
+        private userService: UserService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -34,6 +38,12 @@ export class TheatreUpdateComponent implements OnInit {
         this.cityService.query().subscribe(
             (res: HttpResponse<ICity[]>) => {
                 this.cities = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -70,6 +80,10 @@ export class TheatreUpdateComponent implements OnInit {
     }
 
     trackCityById(index: number, item: ICity) {
+        return item.id;
+    }
+
+    trackUserById(index: number, item: IUser) {
         return item.id;
     }
 }

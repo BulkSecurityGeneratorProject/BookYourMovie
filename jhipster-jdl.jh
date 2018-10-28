@@ -67,7 +67,8 @@ entity Show{
 }
 
 relationship OneToOne{
-	Booking{show} to Show
+	Booking{show} to Show,
+    Theatre{owner} to User
 }
 
 relationship OneToMany {

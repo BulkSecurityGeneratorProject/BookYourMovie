@@ -1,0 +1,18 @@
+
+entity Theatre{
+
+}
+
+relationship OneToOne{
+    Theatre{owner} to User
+}
+
+
+// Use Data Transfert Objects (DTO)
+dto all with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

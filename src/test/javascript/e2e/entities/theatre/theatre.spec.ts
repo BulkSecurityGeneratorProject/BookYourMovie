@@ -41,7 +41,8 @@ describe('Theatre e2e test', () => {
         await promise.all([
             theatreUpdatePage.setNameInput('name'),
             theatreUpdatePage.setAreaInput('area'),
-            theatreUpdatePage.citySelectLastOption()
+            theatreUpdatePage.citySelectLastOption(),
+            theatreUpdatePage.ownerSelectLastOption()
         ]);
         expect(await theatreUpdatePage.getNameInput()).to.eq('name');
         expect(await theatreUpdatePage.getAreaInput()).to.eq('area');
