@@ -24,9 +24,9 @@
             </div>
         </div>
         <div>
-            <button type="submit" (click)="toggleRegistrationType()" *ngIf="!registerAsTheatre" class="btn btn-primary">Register
+            <button type="submit" (click)="toggleRegistrationType()" *ngIf="!registerAsTheatre && !success" class="btn btn-primary">Register
                 As Theatre</button>
-            <button type="submit" (click)="toggleRegistrationType()" *ngIf="registerAsTheatre" class="btn btn-primary">Register
+            <button type="submit" (click)="toggleRegistrationType()" *ngIf="registerAsTheatre && !success" class="btn btn-primary">Register
                 As User</button>
         </div>
     </div>
