@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -15,8 +18,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "seatType",
-            "otherEntityName": "seatType",
+            "relationshipName": "seat",
+            "otherEntityName": "seat",
             "otherEntityRelationshipName": "screen"
         },
         {

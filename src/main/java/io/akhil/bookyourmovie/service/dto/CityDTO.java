@@ -1,5 +1,6 @@
 package io.akhil.bookyourmovie.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 import io.akhil.bookyourmovie.domain.enumeration.CityNames;
@@ -11,6 +12,7 @@ public class CityDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private CityNames name;
 
     public Long getId() {

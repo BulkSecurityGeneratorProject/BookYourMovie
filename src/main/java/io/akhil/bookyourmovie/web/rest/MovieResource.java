@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -43,7 +44,7 @@ public class MovieResource {
      */
     @PostMapping("/movies")
     @Timed
-    public ResponseEntity<MovieDTO> createMovie(@RequestBody MovieDTO movieDTO) throws URISyntaxException {
+    public ResponseEntity<MovieDTO> createMovie(@Valid @RequestBody MovieDTO movieDTO) throws URISyntaxException {
         log.debug("REST request to save Movie : {}", movieDTO);
         if (movieDTO.getId() != null) {
             throw new BadRequestAlertException("A new movie cannot already have an ID", ENTITY_NAME, "idexists");
@@ -65,7 +66,7 @@ public class MovieResource {
      */
     @PutMapping("/movies")
     @Timed
-    public ResponseEntity<MovieDTO> updateMovie(@RequestBody MovieDTO movieDTO) throws URISyntaxException {
+    public ResponseEntity<MovieDTO> updateMovie(@Valid @RequestBody MovieDTO movieDTO) throws URISyntaxException {
         log.debug("REST request to update Movie : {}", movieDTO);
         if (movieDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

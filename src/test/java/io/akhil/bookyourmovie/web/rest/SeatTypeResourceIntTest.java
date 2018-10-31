@@ -145,6 +145,44 @@ public class SeatTypeResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seatTypeRepository.findAll().size();
+        // set the field null
+        seatType.setType(null);
+
+        // Create the SeatType, which fails.
+        SeatTypeDTO seatTypeDTO = seatTypeMapper.toDto(seatType);
+
+        restSeatTypeMockMvc.perform(post("/api/seat-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seatTypeDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<SeatType> seatTypeList = seatTypeRepository.findAll();
+        assertThat(seatTypeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPriceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seatTypeRepository.findAll().size();
+        // set the field null
+        seatType.setPrice(null);
+
+        // Create the SeatType, which fails.
+        SeatTypeDTO seatTypeDTO = seatTypeMapper.toDto(seatType);
+
+        restSeatTypeMockMvc.perform(post("/api/seat-types")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seatTypeDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<SeatType> seatTypeList = seatTypeRepository.findAll();
+        assertThat(seatTypeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSeatTypes() throws Exception {
         // Initialize the database
         seatTypeRepository.saveAndFlush(seatType);

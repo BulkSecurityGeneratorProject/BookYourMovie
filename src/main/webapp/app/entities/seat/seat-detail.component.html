@@ -19,10 +19,10 @@
                         <a [routerLink]="['/booking', seat.bookingId, 'view']">{{seat.bookingId}}</a>
                     </div>
                 </dd>
-                <dt><span>Seat Type</span></dt>
+                <dt><span>Screen</span></dt>
                 <dd>
-                    <div *ngIf="seat.seatTypeId">
-                        <a [routerLink]="['/seat-type', seat.seatTypeId, 'view']">{{seat.seatTypeId}}</a>
+                    <div *ngIf="seat.screenId">
+                        <a [routerLink]="['/screen', seat.screenId, 'view']">{{seat.screenId}}</a>
                     </div>
                 </dd>
             </dl>

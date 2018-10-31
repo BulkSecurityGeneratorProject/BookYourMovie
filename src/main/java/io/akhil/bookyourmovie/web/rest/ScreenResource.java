@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -43,7 +44,7 @@ public class ScreenResource {
      */
     @PostMapping("/screens")
     @Timed
-    public ResponseEntity<ScreenDTO> createScreen(@RequestBody ScreenDTO screenDTO) throws URISyntaxException {
+    public ResponseEntity<ScreenDTO> createScreen(@Valid @RequestBody ScreenDTO screenDTO) throws URISyntaxException {
         log.debug("REST request to save Screen : {}", screenDTO);
         if (screenDTO.getId() != null) {
             throw new BadRequestAlertException("A new screen cannot already have an ID", ENTITY_NAME, "idexists");
@@ -65,7 +66,7 @@ public class ScreenResource {
      */
     @PutMapping("/screens")
     @Timed
-    public ResponseEntity<ScreenDTO> updateScreen(@RequestBody ScreenDTO screenDTO) throws URISyntaxException {
+    public ResponseEntity<ScreenDTO> updateScreen(@Valid @RequestBody ScreenDTO screenDTO) throws URISyntaxException {
         log.debug("REST request to update Screen : {}", screenDTO);
         if (screenDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

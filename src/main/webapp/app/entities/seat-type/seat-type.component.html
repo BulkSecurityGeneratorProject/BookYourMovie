@@ -17,7 +17,7 @@
             <th><span>ID</span></th>
             <th><span>Type</span></th>
             <th><span>Price</span></th>
-            <th><span>Screen</span></th>
+            <th><span>Seat</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,8 +27,8 @@
                 <td>{{seatType.type}}</td>
                 <td>{{seatType.price}}</td>
                 <td>
-                    <div *ngIf="seatType.screenId">
-                        <a [routerLink]="['../screen', seatType.screenId , 'view' ]" >{{seatType.screenId}}</a>
+                    <div *ngIf="seatType.seatId">
+                        <a [routerLink]="['../seat', seatType.seatId , 'view' ]" >{{seatType.seatId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

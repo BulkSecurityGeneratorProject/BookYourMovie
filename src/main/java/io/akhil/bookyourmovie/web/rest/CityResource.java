@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -43,7 +44,7 @@ public class CityResource {
      */
     @PostMapping("/cities")
     @Timed
-    public ResponseEntity<CityDTO> createCity(@RequestBody CityDTO cityDTO) throws URISyntaxException {
+    public ResponseEntity<CityDTO> createCity(@Valid @RequestBody CityDTO cityDTO) throws URISyntaxException {
         log.debug("REST request to save City : {}", cityDTO);
         if (cityDTO.getId() != null) {
             throw new BadRequestAlertException("A new city cannot already have an ID", ENTITY_NAME, "idexists");
@@ -65,7 +66,7 @@ public class CityResource {
      */
     @PutMapping("/cities")
     @Timed
-    public ResponseEntity<CityDTO> updateCity(@RequestBody CityDTO cityDTO) throws URISyntaxException {
+    public ResponseEntity<CityDTO> updateCity(@Valid @RequestBody CityDTO cityDTO) throws URISyntaxException {
         log.debug("REST request to update City : {}", cityDTO);
         if (cityDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -81,7 +82,7 @@ public class CityResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of cities in body
      */
-    @GetMapping("/cities") // following convention to avoid confusions
+    @GetMapping("/cities")
     @Timed
     public List<CityDTO> getAllCities() {
         log.debug("REST request to get all Cities");
@@ -89,11 +90,11 @@ public class CityResource {
     }
     
     /**
-     * GET  /cities : get all the cities.
+     * GET  /cities/get-supported-cities : free from security
      *
      * @return the ResponseEntity with status 200 (OK) and the list of cities in body
      */
-    @GetMapping("/get-supported-cities") // no security api
+    @GetMapping("/cities/get-supported-cities")
     @Timed
     public List<CityDTO> getSupportedCities() {
         log.debug("REST request to get all Cities");

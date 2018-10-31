@@ -141,6 +141,25 @@ public class BookingResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTimeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bookingRepository.findAll().size();
+        // set the field null
+        booking.setTime(null);
+
+        // Create the Booking, which fails.
+        BookingDTO bookingDTO = bookingMapper.toDto(booking);
+
+        restBookingMockMvc.perform(post("/api/bookings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bookingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Booking> bookingList = bookingRepository.findAll();
+        assertThat(bookingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBookings() throws Exception {
         // Initialize the database
         bookingRepository.saveAndFlush(booking);

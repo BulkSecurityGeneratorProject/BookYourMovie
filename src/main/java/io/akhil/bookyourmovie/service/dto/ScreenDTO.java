@@ -1,5 +1,6 @@
 package io.akhil.bookyourmovie.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,6 +11,7 @@ public class ScreenDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String name;
 
     private Long theatreId;

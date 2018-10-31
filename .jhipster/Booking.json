@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "time",
-            "fieldType": "Instant"
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

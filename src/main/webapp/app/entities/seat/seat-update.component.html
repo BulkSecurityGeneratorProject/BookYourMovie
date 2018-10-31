@@ -12,15 +12,27 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_seatNumber">Seat Number</label>
                     <input type="text" class="form-control" name="seatNumber" id="field_seatNumber"
-                        [(ngModel)]="seat.seatNumber" />
+                        [(ngModel)]="seat.seatNumber" required/>
+                    <div [hidden]="!(editForm.controls.seatNumber?.dirty && editForm.controls.seatNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.seatNumber?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_status">Status</label>
-                    <select class="form-control" name="status" [(ngModel)]="seat.status" id="field_status" >
+                    <select class="form-control" name="status" [(ngModel)]="seat.status" id="field_status"  required>
                         <option value="BOOKED">BOOKED</option>
                         <option value="VACANT">VACANT</option>
                         <option value="SPACE">SPACE</option>
                     </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -31,10 +43,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_seatType">Seat Type</label>
-                    <select class="form-control" id="field_seatType" name="seatType" [(ngModel)]="seat.seatTypeId" >
+                    <label class="form-control-label" for="field_screen">Screen</label>
+                    <select class="form-control" id="field_screen" name="screen" [(ngModel)]="seat.screenId" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="seatTypeOption.id" *ngFor="let seatTypeOption of seattypes; trackBy: trackSeatTypeById">{{seatTypeOption.id}}</option>
+                        <option [ngValue]="screenOption.id" *ngFor="let screenOption of screens; trackBy: trackScreenById">{{screenOption.id}}</option>
                     </select>
                 </div>
             </div>

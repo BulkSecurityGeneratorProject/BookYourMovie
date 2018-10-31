@@ -145,6 +145,44 @@ public class SeatResourceIntTest {
 
     @Test
     @Transactional
+    public void checkSeatNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seatRepository.findAll().size();
+        // set the field null
+        seat.setSeatNumber(null);
+
+        // Create the Seat, which fails.
+        SeatDTO seatDTO = seatMapper.toDto(seat);
+
+        restSeatMockMvc.perform(post("/api/seats")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seatDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Seat> seatList = seatRepository.findAll();
+        assertThat(seatList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkStatusIsRequired() throws Exception {
+        int databaseSizeBeforeTest = seatRepository.findAll().size();
+        // set the field null
+        seat.setStatus(null);
+
+        // Create the Seat, which fails.
+        SeatDTO seatDTO = seatMapper.toDto(seat);
+
+        restSeatMockMvc.perform(post("/api/seats")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seatDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Seat> seatList = seatRepository.findAll();
+        assertThat(seatList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSeats() throws Exception {
         // Initialize the database
         seatRepository.saveAndFlush(seat);

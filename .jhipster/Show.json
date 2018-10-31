@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "time",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

@@ -1,5 +1,6 @@
 package io.akhil.bookyourmovie.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 import io.akhil.bookyourmovie.domain.enumeration.SeatClass;
@@ -11,11 +12,13 @@ public class SeatTypeDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private SeatClass type;
 
+    @NotNull
     private String price;
 
-    private Long screenId;
+    private Long seatId;
 
     public Long getId() {
         return id;
@@ -41,12 +44,12 @@ public class SeatTypeDTO implements Serializable {
         this.price = price;
     }
 
-    public Long getScreenId() {
-        return screenId;
+    public Long getSeatId() {
+        return seatId;
     }
 
-    public void setScreenId(Long screenId) {
-        this.screenId = screenId;
+    public void setSeatId(Long seatId) {
+        this.seatId = seatId;
     }
 
     @Override
@@ -76,7 +79,7 @@ public class SeatTypeDTO implements Serializable {
             "id=" + getId() +
             ", type='" + getType() + "'" +
             ", price='" + getPrice() + "'" +
-            ", screen=" + getScreenId() +
+            ", seat=" + getSeatId() +
             "}";
     }
 }

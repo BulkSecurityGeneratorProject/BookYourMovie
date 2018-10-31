@@ -14,11 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="booking"/>
 
-        <addForeignKeyConstraint baseColumnNames="seat_type_id"
+        <addForeignKeyConstraint baseColumnNames="screen_id"
                                  baseTableName="seat"
-                                 constraintName="fk_seat_seat_type_id"
+                                 constraintName="fk_seat_screen_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="seat_type"/>
+                                 referencedTableName="screen"/>
 
     </changeSet>
 </databaseChangeLog>

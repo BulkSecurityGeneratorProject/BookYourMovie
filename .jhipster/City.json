@@ -4,7 +4,10 @@
         {
             "fieldName": "name",
             "fieldType": "CityNames",
-            "fieldValues": "HYDERABAD,BANGALORE,KOLKATTA"
+            "fieldValues": "HYDERABAD,BANGALORE,KOLKATTA",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

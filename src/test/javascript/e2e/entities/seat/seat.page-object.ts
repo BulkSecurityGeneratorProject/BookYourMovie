@@ -29,7 +29,7 @@ export class SeatUpdatePage {
     seatNumberInput = element(by.id('field_seatNumber'));
     statusSelect = element(by.id('field_status'));
     bookingSelect = element(by.id('field_booking'));
-    seatTypeSelect = element(by.id('field_seatType'));
+    screenSelect = element(by.id('field_screen'));
 
     async getPageTitle() {
         return this.pageTitle.getText();
@@ -77,23 +77,23 @@ export class SeatUpdatePage {
         return this.bookingSelect.element(by.css('option:checked')).getText();
     }
 
-    async seatTypeSelectLastOption() {
-        await this.seatTypeSelect
+    async screenSelectLastOption() {
+        await this.screenSelect
             .all(by.tagName('option'))
             .last()
             .click();
     }
 
-    async seatTypeSelectOption(option) {
-        await this.seatTypeSelect.sendKeys(option);
+    async screenSelectOption(option) {
+        await this.screenSelect.sendKeys(option);
     }
 
-    getSeatTypeSelect(): ElementFinder {
-        return this.seatTypeSelect;
+    getScreenSelect(): ElementFinder {
+        return this.screenSelect;
     }
 
-    async getSeatTypeSelectedOption() {
-        return this.seatTypeSelect.element(by.css('option:checked')).getText();
+    async getScreenSelectedOption() {
+        return this.screenSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

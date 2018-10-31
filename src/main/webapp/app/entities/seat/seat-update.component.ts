@@ -8,8 +8,8 @@ import { ISeat } from 'app/shared/model/seat.model';
 import { SeatService } from './seat.service';
 import { IBooking } from 'app/shared/model/booking.model';
 import { BookingService } from 'app/entities/booking';
-import { ISeatType } from 'app/shared/model/seat-type.model';
-import { SeatTypeService } from 'app/entities/seat-type';
+import { IScreen } from 'app/shared/model/screen.model';
+import { ScreenService } from 'app/entities/screen';
 
 @Component({
     selector: 'jhi-seat-update',
@@ -21,13 +21,13 @@ export class SeatUpdateComponent implements OnInit {
 
     bookings: IBooking[];
 
-    seattypes: ISeatType[];
+    screens: IScreen[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private seatService: SeatService,
         private bookingService: BookingService,
-        private seatTypeService: SeatTypeService,
+        private screenService: ScreenService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -42,9 +42,9 @@ export class SeatUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.seatTypeService.query().subscribe(
-            (res: HttpResponse<ISeatType[]>) => {
-                this.seattypes = res.body;
+        this.screenService.query().subscribe(
+            (res: HttpResponse<IScreen[]>) => {
+                this.screens = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -84,7 +84,7 @@ export class SeatUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackSeatTypeById(index: number, item: ISeatType) {
+    trackScreenById(index: number, item: IScreen) {
         return item.id;
     }
 }

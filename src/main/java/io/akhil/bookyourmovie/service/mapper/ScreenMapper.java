@@ -15,7 +15,7 @@ public interface ScreenMapper extends EntityMapper<ScreenDTO, Screen> {
     ScreenDTO toDto(Screen screen);
 
     @Mapping(source = "theatreId", target = "theatre")
-    @Mapping(target = "seatTypes", ignore = true)
+    @Mapping(target = "seats", ignore = true)
     @Mapping(target = "shows", ignore = true)
     Screen toEntity(ScreenDTO screenDTO);
 

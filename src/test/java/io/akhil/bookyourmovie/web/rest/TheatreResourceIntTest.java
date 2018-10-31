@@ -144,6 +144,44 @@ public class TheatreResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = theatreRepository.findAll().size();
+        // set the field null
+        theatre.setName(null);
+
+        // Create the Theatre, which fails.
+        TheatreDTO theatreDTO = theatreMapper.toDto(theatre);
+
+        restTheatreMockMvc.perform(post("/api/theatres")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(theatreDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Theatre> theatreList = theatreRepository.findAll();
+        assertThat(theatreList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAreaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = theatreRepository.findAll().size();
+        // set the field null
+        theatre.setArea(null);
+
+        // Create the Theatre, which fails.
+        TheatreDTO theatreDTO = theatreMapper.toDto(theatre);
+
+        restTheatreMockMvc.perform(post("/api/theatres")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(theatreDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Theatre> theatreList = theatreRepository.findAll();
+        assertThat(theatreList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllTheatres() throws Exception {
         // Initialize the database
         theatreRepository.saveAndFlush(theatre);

@@ -1,6 +1,7 @@
 package io.akhil.bookyourmovie.service.dto;
 
 import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class ShowDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private ZonedDateTime time;
 
     private Long screenId;

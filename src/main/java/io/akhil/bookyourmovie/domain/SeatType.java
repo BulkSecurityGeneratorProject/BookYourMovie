@@ -1,15 +1,13 @@
 package io.akhil.bookyourmovie.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import io.akhil.bookyourmovie.domain.enumeration.SeatClass;
@@ -29,20 +27,19 @@ public class SeatType implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
+    @Column(name = "jhi_type", nullable = false)
     private SeatClass type;
 
-    @Column(name = "price")
+    @NotNull
+    @Column(name = "price", nullable = false)
     private String price;
 
     @ManyToOne
-    @JsonIgnoreProperties("seatTypes")
-    private Screen screen;
+    @JsonIgnoreProperties("types")
+    private Seat seat;
 
-    @OneToMany(mappedBy = "seatType")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Seat> seats = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -78,42 +75,17 @@ public class SeatType implements Serializable {
         this.price = price;
     }
 
-    public Screen getScreen() {
-        return screen;
+    public Seat getSeat() {
+        return seat;
     }
 
-    public SeatType screen(Screen screen) {
-        this.screen = screen;
+    public SeatType seat(Seat seat) {
+        this.seat = seat;
         return this;
     }
 
-    public void setScreen(Screen screen) {
-        this.screen = screen;
-    }
-
-    public Set<Seat> getSeats() {
-        return seats;
-    }
-
-    public SeatType seats(Set<Seat> seats) {
-        this.seats = seats;
-        return this;
-    }
-
-    public SeatType addSeat(Seat seat) {
-        this.seats.add(seat);
-        seat.setSeatType(this);
-        return this;
-    }
-
-    public SeatType removeSeat(Seat seat) {
-        this.seats.remove(seat);
-        seat.setSeatType(null);
-        return this;
-    }
-
-    public void setSeats(Set<Seat> seats) {
-        this.seats = seats;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

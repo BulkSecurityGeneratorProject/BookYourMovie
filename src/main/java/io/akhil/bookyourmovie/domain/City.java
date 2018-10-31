@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -28,8 +29,9 @@ public class City implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private CityNames name;
 
     @OneToMany(mappedBy = "city")

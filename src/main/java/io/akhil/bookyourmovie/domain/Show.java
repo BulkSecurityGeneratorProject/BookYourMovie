@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -25,7 +26,8 @@ public class Show implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "jhi_time")
+    @NotNull
+    @Column(name = "jhi_time", nullable = false)
     private ZonedDateTime time;
 
     @ManyToOne

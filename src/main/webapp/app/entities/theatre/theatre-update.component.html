@@ -12,12 +12,24 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
-                        [(ngModel)]="theatre.name" />
+                        [(ngModel)]="theatre.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_area">Area</label>
                     <input type="text" class="form-control" name="area" id="field_area"
-                        [(ngModel)]="theatre.area" />
+                        [(ngModel)]="theatre.area" required/>
+                    <div [hidden]="!(editForm.controls.area?.dirty && editForm.controls.area?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.area?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">

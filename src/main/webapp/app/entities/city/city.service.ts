@@ -34,7 +34,7 @@ export class CityService {
 
     getSupportedCities(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
-        return this.http.get<ICity[]>(SERVER_API_URL + 'api/get-supported-cities', { params: options, observe: 'response' });
+        return this.http.get<ICity[]>(this.resourceUrl + '/get-supported-cities', { params: options, observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

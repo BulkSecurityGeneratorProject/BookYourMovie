@@ -6,8 +6,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { ISeatType } from 'app/shared/model/seat-type.model';
 import { SeatTypeService } from './seat-type.service';
-import { IScreen } from 'app/shared/model/screen.model';
-import { ScreenService } from 'app/entities/screen';
+import { ISeat } from 'app/shared/model/seat.model';
+import { SeatService } from 'app/entities/seat';
 
 @Component({
     selector: 'jhi-seat-type-update',
@@ -17,12 +17,12 @@ export class SeatTypeUpdateComponent implements OnInit {
     seatType: ISeatType;
     isSaving: boolean;
 
-    screens: IScreen[];
+    seats: ISeat[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private seatTypeService: SeatTypeService,
-        private screenService: ScreenService,
+        private seatService: SeatService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -31,9 +31,9 @@ export class SeatTypeUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ seatType }) => {
             this.seatType = seatType;
         });
-        this.screenService.query().subscribe(
-            (res: HttpResponse<IScreen[]>) => {
-                this.screens = res.body;
+        this.seatService.query().subscribe(
+            (res: HttpResponse<ISeat[]>) => {
+                this.seats = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -69,7 +69,7 @@ export class SeatTypeUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackScreenById(index: number, item: IScreen) {
+    trackSeatById(index: number, item: ISeat) {
         return item.id;
     }
 }

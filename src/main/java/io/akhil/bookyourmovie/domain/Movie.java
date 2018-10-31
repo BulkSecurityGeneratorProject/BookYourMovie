@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,17 +26,20 @@ public class Movie implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "language")
+    @Column(name = "language", nullable = false)
     private Language language;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image_url")
+    @NotNull
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -3,12 +3,18 @@
     "fields": [
         {
             "fieldName": "seatNumber",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "status",
             "fieldType": "Status",
-            "fieldValues": "BOOKED,VACANT,SPACE"
+            "fieldValues": "BOOKED,VACANT,SPACE",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -19,10 +25,16 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "seatType",
-            "otherEntityName": "seatType",
+            "relationshipName": "screen",
+            "otherEntityName": "screen",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "type",
+            "otherEntityName": "seatType",
+            "otherEntityRelationshipName": "seat"
         }
     ],
     "changelogDate": "20181024150421",

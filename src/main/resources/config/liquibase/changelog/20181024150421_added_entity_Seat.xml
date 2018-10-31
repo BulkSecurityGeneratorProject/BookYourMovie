@@ -22,18 +22,18 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="seat_number" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="status" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="booking_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="seat_type_id" type="bigint">
+            <column name="screen_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

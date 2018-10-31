@@ -13,16 +13,10 @@
     ],
     "relationships": [
         {
-            "relationshipName": "screen",
-            "otherEntityName": "screen",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "one-to-many",
             "relationshipName": "seat",
             "otherEntityName": "seat",
-            "otherEntityRelationshipName": "seatType"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20181024150420",

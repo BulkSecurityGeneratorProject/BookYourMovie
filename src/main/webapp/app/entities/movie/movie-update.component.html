@@ -12,11 +12,17 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
-                        [(ngModel)]="movie.name" />
+                        [(ngModel)]="movie.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_language">Language</label>
-                    <select class="form-control" name="language" [(ngModel)]="movie.language" id="field_language" >
+                    <select class="form-control" name="language" [(ngModel)]="movie.language" id="field_language"  required>
                         <option value="TELUGU">TELUGU</option>
                         <option value="HINDI">HINDI</option>
                         <option value="ENGLISH">ENGLISH</option>
@@ -24,6 +30,12 @@
                         <option value="MALAYALAM">MALAYALAM</option>
                         <option value="KANNADA">KANNADA</option>
                     </select>
+                    <div [hidden]="!(editForm.controls.language?.dirty && editForm.controls.language?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.language?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_description">Description</label>
@@ -33,7 +45,13 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_imageUrl">Image Url</label>
                     <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
-                        [(ngModel)]="movie.imageUrl" />
+                        [(ngModel)]="movie.imageUrl" required/>
+                    <div [hidden]="!(editForm.controls.imageUrl?.dirty && editForm.controls.imageUrl?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.imageUrl?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
             </div>

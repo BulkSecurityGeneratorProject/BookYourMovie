@@ -1,5 +1,6 @@
 package io.akhil.bookyourmovie.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 import io.akhil.bookyourmovie.domain.enumeration.Language;
@@ -11,12 +12,15 @@ public class MovieDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private Language language;
 
     private String description;
 
+    @NotNull
     private String imageUrl;
 
     public Long getId() {

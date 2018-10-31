@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -43,7 +44,7 @@ public class TheatreResource {
      */
     @PostMapping("/theatres")
     @Timed
-    public ResponseEntity<TheatreDTO> createTheatre(@RequestBody TheatreDTO theatreDTO) throws URISyntaxException {
+    public ResponseEntity<TheatreDTO> createTheatre(@Valid @RequestBody TheatreDTO theatreDTO) throws URISyntaxException {
         log.debug("REST request to save Theatre : {}", theatreDTO);
         if (theatreDTO.getId() != null) {
             throw new BadRequestAlertException("A new theatre cannot already have an ID", ENTITY_NAME, "idexists");
@@ -65,7 +66,7 @@ public class TheatreResource {
      */
     @PutMapping("/theatres")
     @Timed
-    public ResponseEntity<TheatreDTO> updateTheatre(@RequestBody TheatreDTO theatreDTO) throws URISyntaxException {
+    public ResponseEntity<TheatreDTO> updateTheatre(@Valid @RequestBody TheatreDTO theatreDTO) throws URISyntaxException {
         log.debug("REST request to update Theatre : {}", theatreDTO);
         if (theatreDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

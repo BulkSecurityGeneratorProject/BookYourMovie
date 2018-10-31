@@ -3,12 +3,18 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "language",
             "fieldType": "Language",
-            "fieldValues": "TELUGU,HINDI,ENGLISH,TAMIL,MALAYALAM,KANNADA"
+            "fieldValues": "TELUGU,HINDI,ENGLISH,TAMIL,MALAYALAM,KANNADA",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "description",
@@ -16,7 +22,10 @@
         },
         {
             "fieldName": "imageUrl",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [],

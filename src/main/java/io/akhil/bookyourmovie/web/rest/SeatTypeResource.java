@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -43,7 +44,7 @@ public class SeatTypeResource {
      */
     @PostMapping("/seat-types")
     @Timed
-    public ResponseEntity<SeatTypeDTO> createSeatType(@RequestBody SeatTypeDTO seatTypeDTO) throws URISyntaxException {
+    public ResponseEntity<SeatTypeDTO> createSeatType(@Valid @RequestBody SeatTypeDTO seatTypeDTO) throws URISyntaxException {
         log.debug("REST request to save SeatType : {}", seatTypeDTO);
         if (seatTypeDTO.getId() != null) {
             throw new BadRequestAlertException("A new seatType cannot already have an ID", ENTITY_NAME, "idexists");
@@ -65,7 +66,7 @@ public class SeatTypeResource {
      */
     @PutMapping("/seat-types")
     @Timed
-    public ResponseEntity<SeatTypeDTO> updateSeatType(@RequestBody SeatTypeDTO seatTypeDTO) throws URISyntaxException {
+    public ResponseEntity<SeatTypeDTO> updateSeatType(@Valid @RequestBody SeatTypeDTO seatTypeDTO) throws URISyntaxException {
         log.debug("REST request to update SeatType : {}", seatTypeDTO);
         if (seatTypeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -27,7 +28,8 @@ public class Screen implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
     @ManyToOne
@@ -36,7 +38,7 @@ public class Screen implements Serializable {
 
     @OneToMany(mappedBy = "screen")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<SeatType> seatTypes = new HashSet<>();
+    private Set<Seat> seats = new HashSet<>();
     @OneToMany(mappedBy = "screen")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Show> shows = new HashSet<>();
@@ -75,29 +77,29 @@ public class Screen implements Serializable {
         this.theatre = theatre;
     }
 
-    public Set<SeatType> getSeatTypes() {
-        return seatTypes;
+    public Set<Seat> getSeats() {
+        return seats;
     }
 
-    public Screen seatTypes(Set<SeatType> seatTypes) {
-        this.seatTypes = seatTypes;
+    public Screen seats(Set<Seat> seats) {
+        this.seats = seats;
         return this;
     }
 
-    public Screen addSeatType(SeatType seatType) {
-        this.seatTypes.add(seatType);
-        seatType.setScreen(this);
+    public Screen addSeat(Seat seat) {
+        this.seats.add(seat);
+        seat.setScreen(this);
         return this;
     }
 
-    public Screen removeSeatType(SeatType seatType) {
-        this.seatTypes.remove(seatType);
-        seatType.setScreen(null);
+    public Screen removeSeat(Seat seat) {
+        this.seats.remove(seat);
+        seat.setScreen(null);
         return this;
     }
 
-    public void setSeatTypes(Set<SeatType> seatTypes) {
-        this.seatTypes = seatTypes;
+    public void setSeats(Set<Seat> seats) {
+        this.seats = seats;
     }
 
     public Set<Show> getShows() {

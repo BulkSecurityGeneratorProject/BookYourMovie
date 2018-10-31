@@ -1,3 +1,5 @@
+import { ISeatType } from 'app/shared/model//seat-type.model';
+
 export const enum Status {
     BOOKED = 'BOOKED',
     VACANT = 'VACANT',
@@ -9,7 +11,8 @@ export interface ISeat {
     seatNumber?: string;
     status?: Status;
     bookingId?: number;
-    seatTypeId?: number;
+    screenId?: number;
+    types?: ISeatType[];
 }
 
 export class Seat implements ISeat {
@@ -18,6 +21,7 @@ export class Seat implements ISeat {
         public seatNumber?: string,
         public status?: Status,
         public bookingId?: number,
-        public seatTypeId?: number
+        public screenId?: number,
+        public types?: ISeatType[]
     ) {}
 }

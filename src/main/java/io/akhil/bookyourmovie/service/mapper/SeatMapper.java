@@ -8,15 +8,16 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Seat and its DTO SeatDTO.
  */
-@Mapper(componentModel = "spring", uses = {BookingMapper.class, SeatTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {BookingMapper.class, ScreenMapper.class})
 public interface SeatMapper extends EntityMapper<SeatDTO, Seat> {
 
     @Mapping(source = "booking.id", target = "bookingId")
-    @Mapping(source = "seatType.id", target = "seatTypeId")
+    @Mapping(source = "screen.id", target = "screenId")
     SeatDTO toDto(Seat seat);
 
     @Mapping(source = "bookingId", target = "booking")
-    @Mapping(source = "seatTypeId", target = "seatType")
+    @Mapping(source = "screenId", target = "screen")
+    @Mapping(target = "types", ignore = true)
     Seat toEntity(SeatDTO seatDTO);
 
     default Seat fromId(Long id) {

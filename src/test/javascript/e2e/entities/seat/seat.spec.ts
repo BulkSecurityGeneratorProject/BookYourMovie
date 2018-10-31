@@ -42,7 +42,7 @@ describe('Seat e2e test', () => {
             seatUpdatePage.setSeatNumberInput('seatNumber'),
             seatUpdatePage.statusSelectLastOption(),
             seatUpdatePage.bookingSelectLastOption(),
-            seatUpdatePage.seatTypeSelectLastOption()
+            seatUpdatePage.screenSelectLastOption()
         ]);
         expect(await seatUpdatePage.getSeatNumberInput()).to.eq('seatNumber');
         await seatUpdatePage.save();

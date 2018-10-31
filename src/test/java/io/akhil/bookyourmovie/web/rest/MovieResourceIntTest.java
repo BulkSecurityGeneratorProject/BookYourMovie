@@ -155,6 +155,63 @@ public class MovieResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = movieRepository.findAll().size();
+        // set the field null
+        movie.setName(null);
+
+        // Create the Movie, which fails.
+        MovieDTO movieDTO = movieMapper.toDto(movie);
+
+        restMovieMockMvc.perform(post("/api/movies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(movieDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Movie> movieList = movieRepository.findAll();
+        assertThat(movieList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLanguageIsRequired() throws Exception {
+        int databaseSizeBeforeTest = movieRepository.findAll().size();
+        // set the field null
+        movie.setLanguage(null);
+
+        // Create the Movie, which fails.
+        MovieDTO movieDTO = movieMapper.toDto(movie);
+
+        restMovieMockMvc.perform(post("/api/movies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(movieDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Movie> movieList = movieRepository.findAll();
+        assertThat(movieList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkImageUrlIsRequired() throws Exception {
+        int databaseSizeBeforeTest = movieRepository.findAll().size();
+        // set the field null
+        movie.setImageUrl(null);
+
+        // Create the Movie, which fails.
+        MovieDTO movieDTO = movieMapper.toDto(movie);
+
+        restMovieMockMvc.perform(post("/api/movies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(movieDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Movie> movieList = movieRepository.findAll();
+        assertThat(movieList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllMovies() throws Exception {
         // Initialize the database
         movieRepository.saveAndFlush(movie);

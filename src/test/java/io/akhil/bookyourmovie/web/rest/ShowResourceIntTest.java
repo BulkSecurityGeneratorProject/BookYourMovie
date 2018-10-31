@@ -144,6 +144,25 @@ public class ShowResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTimeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = showRepository.findAll().size();
+        // set the field null
+        show.setTime(null);
+
+        // Create the Show, which fails.
+        ShowDTO showDTO = showMapper.toDto(show);
+
+        restShowMockMvc.perform(post("/api/shows")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(showDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Show> showList = showRepository.findAll();
+        assertThat(showList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllShows() throws Exception {
         // Initialize the database
         showRepository.saveAndFlush(show);

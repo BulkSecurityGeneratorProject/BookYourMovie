@@ -139,6 +139,25 @@ public class ScreenResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = screenRepository.findAll().size();
+        // set the field null
+        screen.setName(null);
+
+        // Create the Screen, which fails.
+        ScreenDTO screenDTO = screenMapper.toDto(screen);
+
+        restScreenMockMvc.perform(post("/api/screens")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(screenDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Screen> screenList = screenRepository.findAll();
+        assertThat(screenList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllScreens() throws Exception {
         // Initialize the database
         screenRepository.saveAndFlush(screen);

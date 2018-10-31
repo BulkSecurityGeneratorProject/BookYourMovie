@@ -41,7 +41,7 @@ describe('SeatType e2e test', () => {
         await promise.all([
             seatTypeUpdatePage.typeSelectLastOption(),
             seatTypeUpdatePage.setPriceInput('price'),
-            seatTypeUpdatePage.screenSelectLastOption()
+            seatTypeUpdatePage.seatSelectLastOption()
         ]);
         expect(await seatTypeUpdatePage.getPriceInput()).to.eq('price');
         await seatTypeUpdatePage.save();

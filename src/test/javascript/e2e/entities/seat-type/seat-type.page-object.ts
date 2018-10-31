@@ -28,7 +28,7 @@ export class SeatTypeUpdatePage {
     cancelButton = element(by.id('cancel-save'));
     typeSelect = element(by.id('field_type'));
     priceInput = element(by.id('field_price'));
-    screenSelect = element(by.id('field_screen'));
+    seatSelect = element(by.id('field_seat'));
 
     async getPageTitle() {
         return this.pageTitle.getText();
@@ -57,23 +57,23 @@ export class SeatTypeUpdatePage {
         return this.priceInput.getAttribute('value');
     }
 
-    async screenSelectLastOption() {
-        await this.screenSelect
+    async seatSelectLastOption() {
+        await this.seatSelect
             .all(by.tagName('option'))
             .last()
             .click();
     }
 
-    async screenSelectOption(option) {
-        await this.screenSelect.sendKeys(option);
+    async seatSelectOption(option) {
+        await this.seatSelect.sendKeys(option);
     }
 
-    getScreenSelect(): ElementFinder {
-        return this.screenSelect;
+    getSeatSelect(): ElementFinder {
+        return this.seatSelect;
     }
 
-    async getScreenSelectedOption() {
-        return this.screenSelect.element(by.css('option:checked')).getText();
+    async getSeatSelectedOption() {
+        return this.seatSelect.element(by.css('option:checked')).getText();
     }
 
     async save() {

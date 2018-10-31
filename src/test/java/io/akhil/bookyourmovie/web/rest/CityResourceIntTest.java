@@ -140,6 +140,25 @@ public class CityResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = cityRepository.findAll().size();
+        // set the field null
+        city.setName(null);
+
+        // Create the City, which fails.
+        CityDTO cityDTO = cityMapper.toDto(city);
+
+        restCityMockMvc.perform(post("/api/cities")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<City> cityList = cityRepository.findAll();
+        assertThat(cityList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCities() throws Exception {
         // Initialize the database
         cityRepository.saveAndFlush(city);
