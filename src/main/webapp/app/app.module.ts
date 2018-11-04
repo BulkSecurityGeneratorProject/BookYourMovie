@@ -20,6 +20,7 @@ import { BookYourMovieEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
+import { OwnerModule } from './owner/owner.module';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         BookYourMovieCoreModule,
         BookYourMovieHomeModule,
         BookYourMovieAccountModule,
+        OwnerModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         BookYourMovieEntityModule
     ],
