@@ -8,6 +8,7 @@ import { IScreen } from 'app/shared/model/screen.model';
 import { ScreenService } from './screen.service';
 import { ITheatre } from 'app/shared/model/theatre.model';
 import { TheatreService } from 'app/entities/theatre';
+import { Status } from 'app/shared/model//seat.model';
 
 @Component({
     selector: 'jhi-screen-update',
@@ -16,6 +17,9 @@ import { TheatreService } from 'app/entities/theatre';
 export class ScreenUpdateComponent implements OnInit {
     screen: IScreen;
     isSaving: boolean;
+    rows: any[] = [];
+    numberOfSeatsInARow = 50;
+    numberOfRows = 30;
 
     theatres: ITheatre[];
 
@@ -24,10 +28,11 @@ export class ScreenUpdateComponent implements OnInit {
         private screenService: ScreenService,
         private theatreService: TheatreService,
         private activatedRoute: ActivatedRoute
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.isSaving = false;
+        this.initializeRows();
         this.activatedRoute.data.subscribe(({ screen }) => {
             this.screen = screen;
         });
@@ -37,6 +42,24 @@ export class ScreenUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+    }
+
+    initializeRows() {
+        const seats: any[] = [];
+        const seat: any = {
+            'status': Status.SPACE,
+            'seatNumber': 0
+        };
+        for (let i = 0; i < this.numberOfSeatsInARow; i++) {
+            seats.push(seat);
+        }
+        const row: any = {
+            'seats': seats
+        };
+        for (let i = 0; i < this.numberOfRows; i++) {
+            this.rows.push(row);
+        }
+        console.log(this.rows);
     }
 
     previousState() {

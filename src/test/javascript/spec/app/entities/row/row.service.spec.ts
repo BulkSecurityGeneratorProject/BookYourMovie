@@ -4,24 +4,24 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
-import { SeatService } from 'app/entities/seat/seat.service';
-import { ISeat, Seat, Status } from 'app/shared/model/seat.model';
+import { RowService } from 'app/entities/row/row.service';
+import { IRow, Row } from 'app/shared/model/row.model';
 
 describe('Service Tests', () => {
-    describe('Seat Service', () => {
+    describe('Row Service', () => {
         let injector: TestBed;
-        let service: SeatService;
+        let service: RowService;
         let httpMock: HttpTestingController;
-        let elemDefault: ISeat;
+        let elemDefault: IRow;
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HttpClientTestingModule]
             });
             injector = getTestBed();
-            service = injector.get(SeatService);
+            service = injector.get(RowService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Seat(0, 0, Status.BOOKED);
+            elemDefault = new Row(0, 0, 0, 'AAAAAAA', 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -36,7 +36,7 @@ describe('Service Tests', () => {
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should create a Seat', async () => {
+            it('should create a Row', async () => {
                 const returnedFromService = Object.assign(
                     {
                         id: 0
@@ -45,18 +45,20 @@ describe('Service Tests', () => {
                 );
                 const expected = Object.assign({}, returnedFromService);
                 service
-                    .create(new Seat(null))
+                    .create(new Row(null))
                     .pipe(take(1))
                     .subscribe(resp => expect(resp).toMatchObject({ body: expected }));
                 const req = httpMock.expectOne({ method: 'POST' });
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should update a Seat', async () => {
+            it('should update a Row', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        seatNumber: 1,
-                        status: 'BBBBBB'
+                        serialNumber: 1,
+                        startPos: 1,
+                        price: 'BBBBBB',
+                        name: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -70,11 +72,13 @@ describe('Service Tests', () => {
                 req.flush(JSON.stringify(returnedFromService));
             });
 
-            it('should return a list of Seat', async () => {
+            it('should return a list of Row', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        seatNumber: 1,
-                        status: 'BBBBBB'
+                        serialNumber: 1,
+                        startPos: 1,
+                        price: 'BBBBBB',
+                        name: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -91,7 +95,7 @@ describe('Service Tests', () => {
                 httpMock.verify();
             });
 
-            it('should delete a Seat', async () => {
+            it('should delete a Row', async () => {
                 const rxPromise = service.delete(123).subscribe(resp => expect(resp.ok));
 
                 const req = httpMock.expectOne({ method: 'DELETE' });

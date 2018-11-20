@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { OwnerRoutingModule } from './owner-routing.module';
 import { OwnerComponent } from './owner/owner.component';
+import { BookYourMovieScreenModule } from './screen/screen.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    OwnerRoutingModule
+    OwnerRoutingModule,
+    BookYourMovieScreenModule
   ],
   declarations: [OwnerComponent]
 })

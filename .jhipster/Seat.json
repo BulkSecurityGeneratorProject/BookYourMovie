@@ -3,7 +3,7 @@
     "fields": [
         {
             "fieldName": "seatNumber",
-            "fieldType": "String",
+            "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
@@ -33,7 +33,7 @@
         {
             "relationshipType": "one-to-many",
             "relationshipName": "type",
-            "otherEntityName": "seatType",
+            "otherEntityName": "row",
             "otherEntityRelationshipName": "seat"
         }
     ],

@@ -1,4 +1,4 @@
-import { ISeatType } from 'app/shared/model//seat-type.model';
+import { IRow } from 'app/shared/model//row.model';
 
 export const enum Status {
     BOOKED = 'BOOKED',
@@ -8,20 +8,20 @@ export const enum Status {
 
 export interface ISeat {
     id?: number;
-    seatNumber?: string;
+    seatNumber?: number;
     status?: Status;
     bookingId?: number;
     screenId?: number;
-    types?: ISeatType[];
+    types?: IRow[];
 }
 
 export class Seat implements ISeat {
     constructor(
         public id?: number,
-        public seatNumber?: string,
+        public seatNumber?: number,
         public status?: Status,
         public bookingId?: number,
         public screenId?: number,
-        public types?: ISeatType[]
+        public types?: IRow[]
     ) {}
 }

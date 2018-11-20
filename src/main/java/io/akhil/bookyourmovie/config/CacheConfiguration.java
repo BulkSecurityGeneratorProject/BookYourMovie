@@ -57,6 +57,7 @@ public class CacheConfiguration {
             cm.createCache(io.akhil.bookyourmovie.domain.Show.class.getName(), jcacheConfiguration);
             cm.createCache(io.akhil.bookyourmovie.domain.Screen.class.getName() + ".seatTypes", jcacheConfiguration);
             cm.createCache(io.akhil.bookyourmovie.domain.SeatType.class.getName() + ".seats", jcacheConfiguration);
+            cm.createCache(io.akhil.bookyourmovie.domain.Row.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

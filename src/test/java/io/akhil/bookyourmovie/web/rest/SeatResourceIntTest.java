@@ -43,8 +43,8 @@ import io.akhil.bookyourmovie.domain.enumeration.Status;
 @SpringBootTest(classes = BookYourMovieApp.class)
 public class SeatResourceIntTest {
 
-    private static final String DEFAULT_SEAT_NUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_SEAT_NUMBER = "BBBBBBBBBB";
+    private static final Integer DEFAULT_SEAT_NUMBER = 1;
+    private static final Integer UPDATED_SEAT_NUMBER = 2;
 
     private static final Status DEFAULT_STATUS = Status.BOOKED;
     private static final Status UPDATED_STATUS = Status.VACANT;
@@ -192,7 +192,7 @@ public class SeatResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(seat.getId().intValue())))
-            .andExpect(jsonPath("$.[*].seatNumber").value(hasItem(DEFAULT_SEAT_NUMBER.toString())))
+            .andExpect(jsonPath("$.[*].seatNumber").value(hasItem(DEFAULT_SEAT_NUMBER)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
     
@@ -207,7 +207,7 @@ public class SeatResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(seat.getId().intValue()))
-            .andExpect(jsonPath("$.seatNumber").value(DEFAULT_SEAT_NUMBER.toString()))
+            .andExpect(jsonPath("$.seatNumber").value(DEFAULT_SEAT_NUMBER))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
 

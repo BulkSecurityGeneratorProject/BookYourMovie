@@ -13,7 +13,7 @@ public class SeatDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String seatNumber;
+    private Integer seatNumber;
 
     @NotNull
     private Status status;
@@ -30,11 +30,11 @@ public class SeatDTO implements Serializable {
         this.id = id;
     }
 
-    public String getSeatNumber() {
+    public Integer getSeatNumber() {
         return seatNumber;
     }
 
-    public void setSeatNumber(String seatNumber) {
+    public void setSeatNumber(Integer seatNumber) {
         this.seatNumber = seatNumber;
     }
 
@@ -87,7 +87,7 @@ public class SeatDTO implements Serializable {
     public String toString() {
         return "SeatDTO{" +
             "id=" + getId() +
-            ", seatNumber='" + getSeatNumber() + "'" +
+            ", seatNumber=" + getSeatNumber() +
             ", status='" + getStatus() + "'" +
             ", booking=" + getBookingId() +
             ", screen=" + getScreenId() +

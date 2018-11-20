@@ -40,15 +40,11 @@ enum Language{
     KANNADA
 }
 
-enum SeatClass{
-	LUXURY,
-    GENERAL,
-    BALCONY
-}
-
-entity SeatType{
-	type SeatClass,
-    price String
+entity Row{
+	serialNumber Integer required,
+	startPos Integer required,
+    price String required,
+    name String required
 }
 
 enum Status{
@@ -58,7 +54,7 @@ enum Status{
 }
 
 entity Seat{
-	seatNumber String required,
+	seatNumber Integer required,
     status Status required
 }
 
@@ -73,7 +69,7 @@ relationship OneToOne{
 
 relationship OneToMany {
     Screen{seat} to Seat,
-    Seat{type} to SeatType,
+    Seat{type} to Row,
     Theatre{screen} to Screen,
     Screen{show} to Show,
     City{theatre} to Theatre,

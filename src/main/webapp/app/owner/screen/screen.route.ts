@@ -30,7 +30,7 @@ export const screenRoute: Routes = [
         path: 'screen',
         component: ScreenComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_OWNER'],
             pageTitle: 'Screens'
         },
         canActivate: [UserRouteAccessService]
@@ -42,7 +42,7 @@ export const screenRoute: Routes = [
             screen: ScreenResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_OWNER'],
             pageTitle: 'Screens'
         },
         canActivate: [UserRouteAccessService]
@@ -54,7 +54,7 @@ export const screenRoute: Routes = [
             screen: ScreenResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_OWNER'],
             pageTitle: 'Screens'
         },
         canActivate: [UserRouteAccessService]
@@ -66,7 +66,7 @@ export const screenRoute: Routes = [
             screen: ScreenResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_OWNER'],
             pageTitle: 'Screens'
         },
         canActivate: [UserRouteAccessService]
@@ -81,7 +81,7 @@ export const screenPopupRoute: Routes = [
             screen: ScreenResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_OWNER'],
             pageTitle: 'Screens'
         },
         canActivate: [UserRouteAccessService],

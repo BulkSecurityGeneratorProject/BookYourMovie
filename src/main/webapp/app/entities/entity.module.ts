@@ -8,6 +8,7 @@ import { BookYourMovieMovieModule } from './movie/movie.module';
 import { BookYourMovieSeatTypeModule } from './seat-type/seat-type.module';
 import { BookYourMovieSeatModule } from './seat/seat.module';
 import { BookYourMovieShowModule } from './show/show.module';
+import { BookYourMovieRowModule } from './row/row.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -21,6 +22,7 @@ import { BookYourMovieShowModule } from './show/show.module';
         BookYourMovieSeatTypeModule,
         BookYourMovieSeatModule,
         BookYourMovieShowModule,
+        BookYourMovieRowModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

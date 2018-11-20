@@ -198,6 +198,41 @@ entity detail page css
 }
 
 /* ==========================================================================
+bookyourmovie specific ui
+========================================================================== */
+
+.screen{
+    width: 100%;
+    overflow: auto;
+}
+
+.scroll-screen{
+    height: 68vh;
+    overflow: auto;
+}
+
+.screen-row{
+    display: inline-flex;
+    margin: 0;
+}
+
+.seat{
+    display: inline-block;
+    margin: 4px 2px;
+    height: 25px;
+    width: 21px;
+    
+}
+
+.seat-border{
+    border: lightgray;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+/* ==========================================================================
 ui bootstrap tweaks
 ========================================================================== */
 .nav,

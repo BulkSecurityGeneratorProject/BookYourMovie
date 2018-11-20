@@ -39,12 +39,12 @@ describe('Seat e2e test', () => {
 
         await seatComponentsPage.clickOnCreateButton();
         await promise.all([
-            seatUpdatePage.setSeatNumberInput('seatNumber'),
+            seatUpdatePage.setSeatNumberInput('5'),
             seatUpdatePage.statusSelectLastOption(),
             seatUpdatePage.bookingSelectLastOption(),
             seatUpdatePage.screenSelectLastOption()
         ]);
-        expect(await seatUpdatePage.getSeatNumberInput()).to.eq('seatNumber');
+        expect(await seatUpdatePage.getSeatNumberInput()).to.eq('5');
         await seatUpdatePage.save();
         expect(await seatUpdatePage.getSaveButton().isPresent()).to.be.false;
 
